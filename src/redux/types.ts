@@ -1,3 +1,5 @@
+import { type } from "os"
+
 export interface Action<T = any> {
   type: T
 }
@@ -50,3 +52,4 @@ export type StoreEnhancerStoreCreator = <S = any, A extends Action = AnyAction>(
   reducer: Reducer<S, A>,
   preloadedState?: S
 ) => Store<S, A>
+

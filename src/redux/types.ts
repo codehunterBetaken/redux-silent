@@ -9,14 +9,15 @@ export interface AnyAction extends Action {
 }
 export type Dispatch<A = AnyAction> = <T extends A>(action: T) => T
 
-export type Listener = () => void
+export type Linstener = () => void
 
 export type Unsubscribe = () => void
 
+export type Subscribe = (linstener: Linstener) => Unsubscribe
 export interface Store<S = any, A extends Action = AnyAction> {
   dispatch: Dispatch<A>
   getState(): S
-  subscribe(listener: Listener): Unsubscribe
+  subscribe(listener: Linstener): Unsubscribe
 }
 
 export type Reducer<S = any, A extends Action = AnyAction> = (
@@ -52,4 +53,8 @@ export type StoreEnhancerStoreCreator = <S = any, A extends Action = AnyAction>(
   reducer: Reducer<S, A>,
   preloadedState?: S
 ) => Store<S, A>
+
+export type ReducerMapObject<S = any,A extends Action = Action> = {
+    [K in keyof S] :  Reducer<S[K],A>
+}
 

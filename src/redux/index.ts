@@ -1,4 +1,5 @@
 import applyMiddleware from './applyMiddleware'
-export {applyMiddleware }
+import CreateStore from './CreateStore'
+export {applyMiddleware, CreateStore }
 export * from './types'
 

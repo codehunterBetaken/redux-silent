@@ -54,6 +54,9 @@ export type StoreEnhancerStoreCreator = <S = any, A extends Action = AnyAction>(
   preloadedState?: S
 ) => Store<S, A>
 
+//此处S为state 的集合，例如 {counter1:counter1,counter2:counter2} 
+//[K in keyof S] :  Reducer<S[K],A>  为S里所有的元素对应reducer
+//[K in keyof S]? :  Reducer<S[K],A>  为部分  此处是对TS语法的理解
 export type ReducerMapObject<S = any,A extends Action = Action> = {
     [K in keyof S] :  Reducer<S[K],A>
 }
